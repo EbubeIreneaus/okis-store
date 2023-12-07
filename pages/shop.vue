@@ -1,5 +1,5 @@
 <template>
-    <div class="flex">
+    <div class="flex px-10 my-10">
         <div class="max-w-[25%] w-full">
             <shop-leftbar></shop-leftbar>
         </div>
