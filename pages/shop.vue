@@ -1326,6 +1326,17 @@
 
                 </div>
             </div>
+
+            <!-- Paggination -->
+            <div class="flex gap-2 justify-center">
+                    <button class="px-5 py-2.5 border text-white bg-black/70">1</button>
+                    <button class="px-5 py-2.5 border text-white bg-black/70 hover:bg-orange-600">2</button>
+                    <button class="px-5 py-2.5 border text-white bg-black/70 hover:bg-orange-600">3</button>
+                    <button class="px-5 py-2.5 border text-white bg-black/70 hover:bg-orange-600">4</button>
+                    <button class="px-5 py-2.5 border text-white bg-black/70 hover:bg-orange-600">...</button>
+                    <button class="px-5 py-2.5 border text-white bg-black/70 hover:bg-orange-600">56</button>
+                    <button class="px-5 py-2.5 border text-white bg-black/70 hover:bg-orange-600">57</button>
+                </div>
         </div>
 
     </div>
