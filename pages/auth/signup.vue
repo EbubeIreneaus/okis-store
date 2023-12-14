@@ -35,8 +35,8 @@
                         <nuxt-link to="" class=" underline underline-offset-1 font-bold">Terms of
                             Services</nuxt-link></label>
                 </div>
-                <button type="submit" class="ring-2 px-10 py-2 rounded-lg font-bold ring-black/50 hover:ring-4">Sign
-                    Up</button>
+                <button type="submit" id="submit" class="ring-2 px-10 py-2 group rounded-lg font-bold ring-black/50 hover:ring-4">
+               <i class="fa fa-spinner animate-spin !hidden group-disabled:!inline-block"></i> Sign Up</button>
             </form>
 
             <div class="h-full flex flex-col items-center">
@@ -56,7 +56,7 @@ definePageMeta({
     layout: ''
 })
 const api_url = useApi()
-const confirm = ref()
+const confirmpass = ref()
 const formerror = reactive({
     msg: '',
     display: false
@@ -78,17 +78,42 @@ function validateData() {
     if (formobj.password == '') {
         return "Password Field Is Required"
     }
-    if (formobj.password !== confirm.value) {
-        return "Password Field Is Required"
+    if (formobj.password !== confirmpass.value) {
+        return "Password Mismatch"
+    }
+    if (formobj.consent !== true) {
+        return "Agree to our terms of service"
     }
     return "validated"
 }
 
-const signin = (e) => {
+const signin = async (e) => {
     const validation = validateData()
+    const submit = document.getElementById('submit');
+    submit.disabled = true
     if ( validation !== 'validated') {
         formerror.msg = validation; formerror.display = true
         location.assign('#form')
+        submit.disabled = false
+        return false
+    }
+    const formData = new FormData()
+    formData.append('name', formobj.name)
+    formData.append('email', formobj.email)
+    formData.append('psw', formobj.password)
+    const {data:res, error} = await useFetch(`${api_url.url}/auth/`,{
+        body: formData,
+        watch: false,
+        method: 'post',
+
+    })
+    if (error) {
+        submit.disabled = false
+    }
+    if (res.value.status == 'success') {
+        // registeration successfull
+    }else{
+        
     }
 }
 </script>
