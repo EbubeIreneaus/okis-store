@@ -96,7 +96,7 @@
                                         <nuxt-link to="/shop" class="text-black/50">
                                             <li class="py-3">My Account</li>
                                         </nuxt-link>
-                                        <nuxt-link to="/shop" class=" text-black/50 ">
+                                        <nuxt-link to="/auth/signin" class=" text-black/50 ">
                                             <li class="py-2">Login | Regiser</li>
                                         </nuxt-link>
                                         <nuxt-link to="/shop" class="text-black/50">
@@ -496,7 +496,7 @@
                                         <span>My Account</span>
                                     </li>
                                 </nuxt-link>
-                                <nuxt-link to="">
+                                <nuxt-link to="/auth/signin">
                                     <li class=" py-2.5 px-5  flex items-center justify-between">
                                         <span>Login | Register</span>
                                     </li>

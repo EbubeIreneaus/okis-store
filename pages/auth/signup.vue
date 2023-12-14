@@ -35,14 +35,15 @@
                         <nuxt-link to="" class=" underline underline-offset-1 font-bold">Terms of
                             Services</nuxt-link></label>
                 </div>
-                <button type="submit" id="submit" class="ring-2 px-10 py-2 group rounded-lg font-bold ring-black/50 hover:ring-4">
-               <i class="fa fa-spinner animate-spin !hidden group-disabled:!inline-block"></i> Sign Up</button>
+                <button type="submit" id="submit"
+                    class="ring-2 px-10 py-2 group rounded-lg font-bold ring-black/50 hover:ring-4">
+                    <i class="fa fa-spinner animate-spin !hidden group-disabled:!inline-block"></i> Sign Up</button>
             </form>
 
             <div class="h-full flex flex-col items-center">
                 <img src="~/assets/images/bg/authbg.png" class=" w-full object-cover normal">
                 <p class="h-fit text-sm font-semibold">I already have an account
-                    <nuxt-link to="" class=" underline underline-offset-1 font-bold">Sign In</nuxt-link>
+                    <nuxt-link to="/auth/signin" class=" underline underline-offset-1 font-bold">Sign In</nuxt-link>
                 </p>
             </div>
         </div>
@@ -55,6 +56,7 @@ import { useApi } from '@/stores/url'
 definePageMeta({
     layout: ''
 })
+const profileId = useCookie('profileId')
 const api_url = useApi()
 const confirmpass = ref()
 const formerror = reactive({
@@ -91,7 +93,7 @@ const signin = async (e) => {
     const validation = validateData()
     const submit = document.getElementById('submit');
     submit.disabled = true
-    if ( validation !== 'validated') {
+    if (validation !== 'validated') {
         formerror.msg = validation; formerror.display = true
         location.assign('#form')
         submit.disabled = false
@@ -101,7 +103,7 @@ const signin = async (e) => {
     formData.append('name', formobj.name)
     formData.append('email', formobj.email)
     formData.append('psw', formobj.password)
-    const {data:res, error} = await useFetch(`${api_url.url}/auth/`,{
+    const { data: res, error } = await useFetch(`${api_url.url}/auth/`, {
         body: formData,
         watch: false,
         method: 'post',
@@ -112,8 +114,11 @@ const signin = async (e) => {
     }
     if (res.value.status == 'success') {
         // registeration successfull
-    }else{
         
+        profileId.value = res.value.id
+        useRouter().push('/')
+    } else {
+        formerror.msg = "server error! please try again later"; formerror.display = true
     }
 }
 </script>
