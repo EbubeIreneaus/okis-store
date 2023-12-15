@@ -231,7 +231,8 @@
                         <button
                             class="border lg:px-16 px-10 lg:py-4 py-2 rounded-lg hover:bg-[#ffc400] bg-white text-black">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <sup class="py-0.5 px-1.5 border font-semibold rounded-full bg-slate-200">{{ cart.items.length }}</sup>
+                            <sup
+                                class="py-0.5 px-1.5 border font-semibold rounded-full bg-slate-200">{{ cart.items.length }}</sup>
                             <span class="ms-2 font-semibold">Cart</span>
                         </button>
                     </nuxt-link>
@@ -286,34 +287,38 @@
             <div class="mt-16 px-8">
                 <h3 class="font-bold text-2xl">Shooping Cart</h3>
                 <!-- Cart Items Grid -->
-                <div class="flex flex-col gap-y-7 my-7 ms-2">
+                <div class="flex flex-col gap-y-5 my-7 ms-2">
                     <!-- cart item -->
-                    <div class="flex justify-between w-full" v-for="product, index in cart.items">
-                        <div class="border w">
-                            <nuxt-picture :src="product.image"></nuxt-picture>
+                    <div class="grid grid-cols-6 w-full" v-for="(product, index) in cart.items.slice(0, 3)">
+                        <div class=" p-1 bg-white w-fit ">
+                            <NuxtImg :src="product.image" quality="80" format="webp" width="70" height="70" fit="cover" />
                         </div>
-                        <div class="flex-grow text-black/50 font-semibold px-7 text-sm">
-                            <P class="mt-0.5 mb-2.5">Autem ipsa ad</P>
-                            <p>1 x $200</p>
+                        <div class="col-span-4 text-black/50 font-semibold px-7 text-sm  ">
+                            <P class="mt-0.5 mb-2.5 line-clamp-1">{{ product.title }}</P>
+                            <p class="font-mono">{{ product.quantity }} x {{ formatNumber(product.price) }}</p>
                         </div>
-                        <div><i class="fa fa-close text-black/50"></i></div>
+                        <div @click="cart.removeItem(index)" class="border px-2.5 py-1.5 group h-fit w-fit ">
+                            <i class="fa fa-close text-black/50 transition-all ease-in-out duration-300 
+                        group-hover:rotate-180 "></i>
+                        </div>
                     </div>
                     <!-- xx cart item xx -->
-                   
+                    <p v-if="cart.items.length > 3">.............</p>
                 </div>
+
                 <!-- xx art Item Grid -->
                 <div class="text-black/50 font-semibold px-2 text-sm ">
                     <p class="float-left">SubTotal</p>
-                    <p class="float-right">$500</p>
+                    <p class="float-right font-mono">{{ formatNumber(cart.getTotalPrice()) }}</p>
                 </div>
 
                 <div class="mt-20 text-white/50 font-semibold">
-                    <nuxt-link to="">
+                    <nuxt-link to="/cart">
                         <button
                             class="block border w-full py-2 rounded-lg bg-slate-900 hover:bg-orange-600 mb-3">minicart</button>
                     </nuxt-link>
 
-                    <nuxt-link to="">
+                    <nuxt-link to="/checkout">
                         <button
                             class="block border w-full py-2 rounded-lg bg-slate-900 hover:bg-orange-600">Checkout</button>
                     </nuxt-link>
@@ -603,6 +608,15 @@ const nav_scroll = () => {
     } else {
         document.getElementsByClassName('nav')[0].classList.remove('nav-slide')
     }
+}
+/** @param {number} amount */
+function formatNumber(amount) {
+    const formater = new Intl.NumberFormat('en-US', {
+        currency: 'USD',
+        maximumFractionDigits: 2,
+        style: 'currency'
+    })
+    return formater.format(amount)
 }
 onMounted(() => {
     window.addEventListener('scroll', nav_scroll)

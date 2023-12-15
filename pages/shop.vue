@@ -176,9 +176,9 @@ const { data: products, pending: pending, error: error } = await useAsyncData('p
 )
 console.log(products);
 const addToCart = (product, e) => {
-  e.target.classList.toggle('!ring-4')
-  e.target.classList.toggle('!ring-orange-500')
-  e.target.classList.toggle('!text-orange-600')
+  e.target.classList.add('!ring-4')
+  e.target.classList.add('!ring-orange-500')
+  e.target.classList.add('!text-orange-600')
 
   const cart = useCart()
   cart.addCart(product.title, product.price, product.description, product.image, product.id)
