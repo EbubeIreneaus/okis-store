@@ -7,6 +7,7 @@
                     <nuxt-link to="/">
                         <li>HOME</li>
                     </nuxt-link>
+                    <!-- shop -->
                     <div class="group h-100 nav-drop-down">
                         <nuxt-link to="">SHOP &nbsp;<i class="fa-solid fa-caret-down"></i></nuxt-link>
                         <div class="absolute shadow-sm shadow-black/30  top-full bg-white text-black drop-content">
@@ -179,13 +180,13 @@
                             <div class="min-w-[250px] w-full py-7">
                                 <div class="">
                                     <ul class="ms-5 font-serif">
-                                        <nuxt-link to="/shop" class="text-black/50">
+                                        <nuxt-link to="/auth/signin" class="text-black/50">
                                             <li class="py-3">Login</li>
                                         </nuxt-link>
                                         <nuxt-link to="/shop" class=" text-black/50 ">
                                             <li class="py-2">Settings</li>
                                         </nuxt-link>
-                                        <nuxt-link to="/shop" class=" text-black/50 ">
+                                        <nuxt-link to="/auth/signup" class=" text-black/50 ">
                                             <li class="py-2">Register</li>
                                         </nuxt-link>
 
@@ -230,7 +231,7 @@
                         <button
                             class="border lg:px-16 px-10 lg:py-4 py-2 rounded-lg hover:bg-[#ffc400] bg-white text-black">
                             <i class="fa-solid fa-cart-shopping"></i>
-                            <sup class="py-0.5 px-1.5 border rounded-full bg-orange-600">3</sup>
+                            <sup class="py-0.5 px-1.5 border font-semibold rounded-full bg-slate-200">{{ cart.items.length }}</sup>
                             <span class="ms-2 font-semibold">Cart</span>
                         </button>
                     </nuxt-link>
@@ -287,9 +288,9 @@
                 <!-- Cart Items Grid -->
                 <div class="flex flex-col gap-y-7 my-7 ms-2">
                     <!-- cart item -->
-                    <div class="flex justify-between w-full">
+                    <div class="flex justify-between w-full" v-for="product, index in cart.items">
                         <div class="border w">
-                            <img src="~/assets/images/product/small-size/1.jpg" alt="" class="w-16 h-16">
+                            <nuxt-picture :src="product.image"></nuxt-picture>
                         </div>
                         <div class="flex-grow text-black/50 font-semibold px-7 text-sm">
                             <P class="mt-0.5 mb-2.5">Autem ipsa ad</P>
@@ -298,32 +299,7 @@
                         <div><i class="fa fa-close text-black/50"></i></div>
                     </div>
                     <!-- xx cart item xx -->
-
-                    <!-- cart item -->
-                    <div class="flex justify-between w-full">
-                        <div class="border w">
-                            <img src="~/assets/images/product/small-size/2.jpg" alt="" class="w-16 h-16">
-                        </div>
-                        <div class="flex-grow text-black/50 font-semibold px-7 text-sm">
-                            <P class="mt-0.5 mb-2.5">Tenetur illum amet</P>
-                            <p>1 x $180</p>
-                        </div>
-                        <div><i class="fa fa-close text-black/50"></i></div>
-                    </div>
-                    <!-- xx cart item xx -->
-
-                    <!-- cart item -->
-                    <div class="flex justify-between w-full">
-                        <div class="border w">
-                            <img src="~/assets/images/product/small-size/3.jpg" alt="" class="w-16 h-16">
-                        </div>
-                        <div class="flex-grow text-black/50 font-semibold px-7 text-sm">
-                            <P class="mt-0.5 mb-2.5">Non doloremque placeat</P>
-                            <p>1 x $180</p>
-                        </div>
-                        <div><i class="fa fa-close text-black/50"></i></div>
-                    </div>
-                    <!-- xx cart item xx -->
+                   
                 </div>
                 <!-- xx art Item Grid -->
                 <div class="text-black/50 font-semibold px-2 text-sm ">
@@ -601,6 +577,8 @@
 </template>
 
 <script setup>
+import { useCart } from '@/stores/cart'
+const cart = useCart()
 const sbc_content = ref(false) // serach by category
 const mobile = ref(false)
 const sidebar = reactive({

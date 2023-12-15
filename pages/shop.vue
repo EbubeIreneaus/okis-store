@@ -107,15 +107,15 @@
                   <div class="text-center">
                     <div class="flex gap-2.5 justify-center mb-3 mt-2">
                       <div>
-                        <i class="fab fa-opencart ring-1 hover:ring-2 ring-orange-300 p-3
+                        <i class="fab fa-opencart ring-1 hover:ring-2 ring-orange-100 p-3
+                                         hover:text-orange-600 rounded-md" @click="addToCart(product, $event)"></i>
+                      </div>
+                      <div>
+                        <i class="far fa-heart ring-1 hover:ring-2 ring-orange-100 p-3
                                          hover:text-orange-600 rounded-md"></i>
                       </div>
                       <div>
-                        <i class="far fa-heart ring-1 hover:ring-2 ring-orange-300 p-3
-                                         hover:text-orange-600 rounded-md"></i>
-                      </div>
-                      <div>
-                        <i class="fa-solid fa-list ring-1 hover:ring-2 ring-orange-300 p-3
+                        <i class="fa-solid fa-list ring-1 hover:ring-2 ring-orange-100 p-3
                                          hover:text-orange-600 rounded-md"></i>
                       </div>
 
@@ -156,8 +156,10 @@
 </template>
 
 <script setup>
-// import Swiper from "swiper/bundle";
-// import "swiper/css/bundle";
+import { useApi } from '@/stores/url'
+import { useCart } from '@/stores/cart'
+const profileId = useCookie("profileId", { maxAge: 60 * 60 * 24 * 30 })
+
 
 const grid_display = ref(3);
 const no_of_display = ref(10)
@@ -172,7 +174,16 @@ const { data: products, pending: pending, error: error } = await useAsyncData('p
     watch: [no_of_display]
   }
 )
-console.log(products.value);
+console.log(products);
+const addToCart = (product, e) => {
+  e.target.classList.toggle('!ring-4')
+  e.target.classList.toggle('!ring-orange-500')
+  e.target.classList.toggle('!text-orange-600')
+
+  const cart = useCart()
+  cart.addCart(product.title, product.price, product.description, product.image, product.id)
+  
+}
 
 onMounted(() => {
   if (window.innerWidth < 425) {
