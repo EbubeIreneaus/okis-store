@@ -1,9 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', '@nuxt/image'],
+  modules: ['@pinia/nuxt', '@nuxt/image', '@formkit/auto-animate/nuxt', 'nuxt-mdi'],
   image: {
     domains: ['fakestoreapi.com']
+  },
+  mdi:{
+    cache: false,
+    componentName: 'myIcon',
+    defaultSize: '1em'
   },
   postcss: {
     plugins: {
@@ -14,13 +19,10 @@ export default defineNuxtConfig({
 
   app:{
     pageTransition:{
-      name: 'slide',
-      mode:'out-in'
+      name: 'page', mode: 'out-in'
     },
-
     layoutTransition:{
-      name: 'silde',
-      mode: 'out-in'
+      name: 'layout', mode: 'out-in'
     }
   },
 

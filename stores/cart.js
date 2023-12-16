@@ -22,6 +22,13 @@ export const useCart = defineStore('cart', {
         removeItem(index){
             this.items.splice(index, 1)
         },
+        increment(value, index){
+            value = Number(value)
+            if (typeof value !== 'number') {
+                return false
+            }
+            this.items[index].quantity = value
+        },
         getTotalPrice(){
             let total = 0
             let num;
