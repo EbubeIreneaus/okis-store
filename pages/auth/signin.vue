@@ -44,10 +44,12 @@
 <script setup>
 import { useApi } from '@/stores/url'
 const profileId = useCookie('profileId')
+
 definePageMeta({
     layout: ''
 })
 const api_url = useApi()
+const url_previous = api_url.previous ?? "/"
 const confirmpass = ref()
 const formerror = reactive({
     msg: '',
@@ -96,7 +98,7 @@ const signin = async (e) => {
         // registeration successfull
         
         profileId.value = res.value.id
-        useRouter().push('/')
+        useRouter().push(url_previous)
     }else{
         formerror.msg = res.value.msg; formerror.display = true
         console.log(res.value.code);

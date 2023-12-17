@@ -68,7 +68,18 @@
 </template>
 
 <script setup>
+
+import { useApi } from '@/stores/url'
+
 const countries = ["Nigeria", "Ghana", "Cameroon", "Niger", "Togo", "South Africa"]
+const id = useCookie('profileId')
+
+if (id.value == undefined) {
+    useApi().previous = '/checkout'
+    useRouter().push("/auth/signin")
+}
+
+
 </script>
 
 <style lang="scss" scoped></style>
