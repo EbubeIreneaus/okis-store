@@ -116,8 +116,10 @@
                                          hover:text-orange-600 rounded-md"></i>
                         </div>
                         <div>
-                          <i class="fa-solid fa-list ring-1 hover:ring-2 ring-orange-100 p-3
+                          <NuxtLink :to="`/product/${product.id}`">
+                            <i class="fa-solid fa-eye ring-1 hover:ring-2 ring-orange-100 p-3
                                          hover:text-orange-600 rounded-md"></i>
+                          </NuxtLink>
                         </div>
 
                       </div>
