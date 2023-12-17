@@ -56,7 +56,7 @@
                             <span>Totals</span><span class="float-right font-mono">{{money( cart.getTotalPrice()+ 60) }}</span>
                         </div>
                     </div>
-                    <button class="border px-20 py-2.5 bg-slate-300 mt-5 hover:ring-2 text-black/50">Checkout</button>
+                    <NuxtLink to="/checkout" class="border block w-fit px-20 py-2.5 bg-slate-300 mt-5 hover:ring-2 text-black/50">Checkout</NuxtLink>
                 </div>
             </div>
         </div>
