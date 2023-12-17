@@ -13,7 +13,7 @@
         <div>
             <div></div>
 
-            <div class="grid grid-cols-2 font-sans md:px-10 py-10">
+            <div class="grid grid-cols-2 gap-x-10 gap-y-7 font-sans md:px-10 py-10">
                 <div>
                     <h2 class="text-2xl font-bold text-black">Billing Details</h2>
                     <form class="text-black/50">
@@ -23,6 +23,12 @@
                                 <option v-for="(x, index) in countries" :value="x">{{ x }}</option>
                             </select>
                         </div>
+                        <div class="mb-5">
+                            <label class="font-semibold">Full Name</label>
+                            <input type="text" v-model="user.name" class="py-2.5 w-full outline-none border ps-2"
+                                placeholder="full name" />
+                        </div>
+
                         <div class="mb-5">
                             <label class="font-semibold">Company Name</label>
                             <input type="text" class="py-2.5 w-full outline-none border ps-2" placeholder="company name" />
@@ -52,15 +58,52 @@
                                 <input type="text" class="py-2.5 w-full outline-none border ps-2" placeholder="zip code" />
                             </div>
                             <div>
-                                <label class="font-semibold">Phone <span class="text-red-500">*</span></label>
-                                <input type="text" class="py-2.5 w-full outline-none border ps-2" placeholder="phone" />
+                                <label class="font-semibold">Email<span class="text-red-500">*</span></label>
+                                <input v-model="user.email" type="text" class="py-2.5 w-full outline-none border ps-2"
+                                    placeholder="phone" />
                             </div>
                             <div>
-                                <label class="font-semibold">Phone (2)</label>
+                                <label class="font-semibold">Phone</label>
                                 <input type="text" class="py-2.5 w-full outline-none border ps-2" placeholder="phone" />
                             </div>
                         </div>
                     </form>
+                </div>
+                <div>
+                    <div class="md:px-7 bg-slate-100 py-10">
+                        <h2 class="text-3xl font-bold text-black py-7">Your Order</h2>
+                        <div>
+                            <table class="w-full font-sans">
+                                <tr class="uppercase border-b border-t">
+                                    <th class="py-5">Product</th>
+                                    <th class="py-5">Total</th>
+                                </tr>
+                                <tr v-for="(product, index) in cart.items" :key="index" class="text-black/70 border-t border-b">
+                                    <td class="py-4">{{ product.title }}<span class="font-mono"> x {{product.quantity}}</span></td>
+                                    <td class="font-mono py-4">{{ money(product.price * product.quantity) }}</td>
+                                </tr>
+                                <tr  class="text-black/70 border-t border-b font-bold ">
+                                    <td class="py-4">Cart Totals</td>
+                                    <td class="font-mono py-4">{{ money(cart.getTotalPrice()) }}</td>
+                                </tr>
+                                <tr  class="text-black border-t border-b font-bold text-xl">
+                                    <td class="py-4">Totals</td>
+                                    <td class="font-mono py-4">{{ money(cart.getTotalPrice() + 60) }}</td>
+                                </tr>
+                            </table>
+                            <div class="text-black/60 my-10">
+                                <h2 class="text-xl font-bold">Direct Bank Transfer..</h2>
+                                <p class="my-4">
+                                    Make your payment directly into our bank account. Please use your Order 
+                                    ID as the payment reference. Your order won’t be shipped until the funds
+                                     have cleared in our account.
+                                </p>
+                                <h2 class="text-xl font-bold mb-2">Cheque Payment</h2>
+                                <h2 class="text-xl font-bold">Paypal</h2>
+                            </div>
+                            <button class="py-4 w-full my-6 hover:ring-2 bg-slate-200 text-black/60 text-center font-semibold" id="paypal-checkout">Place Order</button>
+                       </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -70,15 +113,39 @@
 <script setup>
 
 import { useApi } from '@/stores/url'
+import {useCart} from '@/stores/cart'
 
+const cart = useCart()
 const countries = ["Nigeria", "Ghana", "Cameroon", "Niger", "Togo", "South Africa"]
 const id = useCookie('profileId')
+const user = reactive({
+    name: '',
+    email: ''
+})
 
 if (id.value == undefined) {
     useApi().previous = '/checkout'
     useRouter().push("/auth/signin")
 }
 
+const { data: res, pending, error } = await useFetch(`${useApi().url}/auth/profile/`, {
+    query: { "profileId": id.value },
+    watch: false,
+    method: 'get'
+})
+if (res.value.status == 'success') {
+    user.name = res.value.name
+    user.email = res.value.email
+}
+if (res.value == 'failed') {
+    useRouter().push('/auth/signin')
+}
+function money(amount) {
+    const formmater = new Intl.NumberFormat('en-US', {
+        style: "currency", currency: 'USD', maximumFractionDigits: 2
+    })
+    return formmater.format(amount)
+}
 
 </script>
 

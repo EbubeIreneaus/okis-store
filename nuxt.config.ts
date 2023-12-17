@@ -1,10 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', "@pinia-plugin-persistedstate/nuxt", '@nuxt/image', '@formkit/auto-animate/nuxt', 'nuxt-mdi','@vueuse/nuxt'],
+  modules: ['@pinia/nuxt', "@pinia-plugin-persistedstate/nuxt", '@nuxt/image', 
+  '@formkit/auto-animate/nuxt', 'nuxt-mdi','@vueuse/nuxt'],
+  
+
   image: {
     domains: ['fakestoreapi.com']
   },
+
   mdi:{
     cache: false,
     componentName: 'myIcon',
