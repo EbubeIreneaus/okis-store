@@ -5,14 +5,14 @@ export const useCart = defineStore("cart", {
     items: [],
   }),
   actions: {
-    addCart(title, price, desc, image, id) {
+    addCart(title, price, desc, image, id, quantity=1) {
       for (let index = 0; index < this.items.length; index++) {
         if (this.items[index].id == id) {
           this.items[index].quantity++;
           return;
         }
       }
-      let cartItems = { title, price, desc, image, id, quantity: 1 };
+      let cartItems = { title, price, desc, image, id, quantity };
       this.items.push(cartItems);
       
     },

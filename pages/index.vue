@@ -129,95 +129,39 @@
                 <p class="text-black/50 font-semibold text-sm">Top Featured Collections</p>
                 <p class=" text-3xl font-bold text-black/90">Featured Categories</p>
             </div>
+
             <div class="swiper-container fcs max-h-fit h-full my-10 md:w-[90%] mx-auto group relative">
                 <div class="swiper-wrapper ">
-                    <div class="swiper-slide ">
-                        <div class="flex items-center border px-5 py-20 shadow-md shadow-black/50">
-                            <img src="~/assets/images/product/large-size/1.jpg" alt="" class="w-32 h-32">
+                    <div class="swiper-slide " v-for="(product, index) in product">
+                        <div class="flex items-center gap-2 border px-5 py-20 shadow-sm rounded-2xl">
+                            <img :src="product.image" alt="" class="w-32 h-32 object-cover">
                             <div>
-                                <p class="text-lg text-orange-400">(20 product available)</p>
+                                <p class="text-lg text-orange-400">({{ 20 * index / 2 }} product available)</p>
                                 <ul class="text-sm font-bold text-black/50 ">
-                                    <li class="my-1"><nuxt-link to="">Home Theather</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Speaker System</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Sport</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Stereo Reciever</nuxt-link></li>
+                                    <li class="my-1 flex items-center gap-1.5">
+                                        <i class="fa fa-arrow-right font-bold text-black/70"></i>
+                                        <nuxt-link to="">codeXtreme</nuxt-link>
+                                    </li>
+                                    <li class="my-1 flex items-center gap- !line-clamp-1">
+                                        <i class="fa fa-arrow-right font-bold text-black/70"></i>&nbsp;
+                                        <nuxt-link to="">{{product.title}}</nuxt-link>
+                                    </li>
+                                    <li class="my-1 flex items-center gap-1.5 !sr-onlyline-clamp-1">
+                                        <i class="fa fa-arrow-right font-bold text-black/70"></i>
+                                        <nuxt-link to="">{{ product.category }}</nuxt-link>
+                                    </li>
+                                    <li class="my-1 flex items-center gap-1.5">
+                                        <i class="fa fa-arrow-right font-bold text-black/70"></i>
+                                        <nuxt-link to="">In Stock</nuxt-link>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="flex items-center border px-5 py-20 shadow-md shadow-black/50">
-                            <img src="~/assets/images/product/large-size/2.jpg" alt="" class="w-32 h-32">
-                            <div>
-                                <p class="text-lg text-orange-400">(20 product available)</p>
-                                <ul class="text-sm font-bold text-black/50 ">
-                                    <li class="my-1"><nuxt-link to="">Home Theather</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Speaker System</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Sport</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Stereo Reciever</nuxt-link></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="flex items-center border px-5 py-20 shadow-md shadow-black/50">
-                            <img src="~/assets/images/product/large-size/3.jpg" alt="" class="w-32 h-32">
-                            <div>
-                                <p class="text-lg text-orange-400">(20 product available)</p>
-                                <ul class="text-sm font-bold text-black/50 ">
-                                    <li class="my-1"><nuxt-link to="">Home Theather</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Speaker System</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Sport</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Stereo Reciever</nuxt-link></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide ">
-                        <div class="flex items-center border px-5 py-20 shadow-md shadow-black/50">
-                            <img src="~/assets/images/product/large-size/4.jpg" alt="" class="w-32 h-32">
-                            <div>
-                                <p class="text-lg text-orange-400">(20 product available)</p>
-                                <ul class="text-sm font-bold text-black/50 ">
-                                    <li class="my-1"><nuxt-link to="">Home Theather</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Speaker System</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Sport</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Stereo Reciever</nuxt-link></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="flex items-center border px-5 py-20 shadow-md shadow-black/50">
-                            <img src="~/assets/images/product/large-size/5.jpg" alt="" class="w-32 h-32">
-                            <div>
-                                <p class="text-lg text-orange-400">(20 product available)</p>
-                                <ul class="text-sm font-bold text-black/50 ">
-                                    <li class="my-1"><nuxt-link to="">Home Theather</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Speaker System</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Sport</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Stereo Reciever</nuxt-link></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="flex items-center border px-5 py-20 shadow-md shadow-black/50">
-                            <img src="~/assets/images/product/large-size/6.jpg" alt="" class="w-32 h-32">
-                            <div>
-                                <p class="text-lg text-orange-400">(20 product available)</p>
-                                <ul class="text-sm font-bold text-black/50 ">
-                                    <li class="my-1"><nuxt-link to="">Home Theather</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Speaker System</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Sport</nuxt-link></li>
-                                    <li class="mb-1"><nuxt-link to="">Stereo Reciever</nuxt-link></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev border px-7 py-7 bg-slate-200 !invisible group-hover:!visible"></div>
+                <div class="swiper-button-next px-7 py-7 bg-slate-200 !invisible group-hover:!visible"></div>
             </div>
         </div>
 
@@ -231,11 +175,11 @@
                         <h2 class="text-4xl text-white">CAR AND TRUCK</h2>
                         <h2 class="text-4xl text-white/80 font-bold"> MERCEDES BENZ</h2>
                         <p class="font-semibold mt-3 text-slate-100">
-                        Lorem ipsum dolor sit amet consectetur<br> adipisicing elit. Illum, voluptate.</p>
+                            Lorem ipsum dolor sit amet consectetur<br> adipisicing elit. Illum, voluptate.</p>
                         <br><br>
                         <nuxt-link to="" class="ring ring-orange-200 px-10 py-2.5 bg-orange-500 text-white rounded-lg
                         hover:bg-orange-300">
-                        Shop now</nuxt-link>
+                            Shop now</nuxt-link>
                     </div>
                 </div>
             </div>
@@ -247,11 +191,12 @@
                         <h2 class="text-4xl text-white">ROTIFORM SFO</h2>
                         <h2 class="text-4xl text-white/80 font-bold"> CUSTOM FORGED</h2>
                         <p class="font-semibold mt-3 text-slate-100 max-w-sm">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam tempore distinctio cupiditate expedita officiis laudantium.</p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam tempore distinctio cupiditate
+                            expedita officiis laudantium.</p>
                         <br>
                         <nuxt-link to="" class="ring ring-orange-200 px-10 py-2.5 bg-orange-500 text-white rounded-lg
                         hover:bg-orange-300">
-                        Shop now</nuxt-link>
+                            Shop now</nuxt-link>
                     </div>
                 </div>
             </div>
@@ -260,9 +205,9 @@
         <!-- small banners -->
         <div>
             <div class="grid lg:grid-cols-3 gap-3 mx-5">
-            <img src="~/assets/images/banner/1-3.jpg" alt="" class="w-full h-36 object-cover">
-            <img src="~/assets/images/banner/1-4.jpg" alt="" class="w-full h-36 object-cover">
-            <img src="~/assets/images/banner/1-5.jpg" alt="" class="w-full h-36 object-cover">
+                <img src="~/assets/images/banner/1-3.jpg" alt="" class="w-full h-36 object-cover">
+                <img src="~/assets/images/banner/1-4.jpg" alt="" class="w-full h-36 object-cover">
+                <img src="~/assets/images/banner/1-5.jpg" alt="" class="w-full h-36 object-cover">
             </div>
         </div>
         <!-- new on arrival -->
@@ -272,7 +217,7 @@
                 <p class=" text-3xl font-bold text-black/90">New Arrivals Products</p>
             </div>
             <div class="mt-10">
-            <oneline-product></oneline-product>
+                <oneline-product></oneline-product>
             </div>
         </div>
         <!-- banner large -->
@@ -295,13 +240,14 @@
                 <p class=" text-3xl font-bold text-black/90">Shop By Brands</p>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-5 my-10 px-5">
-            <img src="~/assets/images/brand/1.jpg" alt="">
-            <img src="~/assets/images/brand/2.jpg" alt="">
-            <img src="~/assets/images/brand/3.jpg" alt="">
-            <img src="~/assets/images/brand/4.jpg" alt="">
-            <img src="~/assets/images/brand/5.jpg" alt="">
-            <img src="~/assets/images/brand/6.jpg" alt="">
-            <img src="~/assets/images/brand/7.jpg" alt="">        </div>
+                <img src="~/assets/images/brand/1.jpg" alt="">
+                <img src="~/assets/images/brand/2.jpg" alt="">
+                <img src="~/assets/images/brand/3.jpg" alt="">
+                <img src="~/assets/images/brand/4.jpg" alt="">
+                <img src="~/assets/images/brand/5.jpg" alt="">
+                <img src="~/assets/images/brand/6.jpg" alt="">
+                <img src="~/assets/images/brand/7.jpg" alt="">
+            </div>
 
         </div><br>
         <!-- new laters -->
@@ -310,14 +256,16 @@
                 <img src="~/assets/images/breadcrumb/1.jpg" alt="">
                 <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
                     <div class="text-white text-center max-w-2xl w-full">
-                    <h2 class="text-4xl font-bold">Join our news Later</h2>
-                    <p class="text-sm font-semibold mt-3">Get E-mail updates about our latest shop and special offers.</p>
+                        <h2 class="text-4xl font-bold">Join our news Later</h2>
+                        <p class="text-sm font-semibold mt-3">Get E-mail updates about our latest shop and special offers.
+                        </p>
 
-                    <div class="mt-10 flex items-center">
-                        <input type="email" placeholder="Enter your email" class="w-full py-2.5 outline-none ps-5 text-black/50">
-                        <button class="bg-orange-400 py-2.5 px-10">subscribe</button>
+                        <div class="mt-10 flex items-center">
+                            <input type="email" placeholder="Enter your email"
+                                class="w-full py-2.5 outline-none ps-5 text-black/50">
+                            <button class="bg-orange-400 py-2.5 px-10">subscribe</button>
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -327,6 +275,11 @@
 <script setup>
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
+
+const { data: product, pending, error } =  await useFetch('https://fakestoreapi.com/products', {
+    params: { imit: 20 },
+    watch: false
+})
 
 onMounted(() => {
     const main = new Swiper('.main', {
@@ -371,8 +324,6 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-img{
+<style scoped>img {
     object-fit: cover;
-}
-</style>
+}</style>
