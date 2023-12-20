@@ -25,7 +25,7 @@
                         </div>
                         <div class="mb-5">
                             <label class="font-semibold">Full Name</label>
-                            <input type="text" v-model="user.name" class="py-2.5 w-full outline-none border ps-2"
+                            <input type="text"  class="py-2.5 w-full outline-none border ps-2"
                                 placeholder="full name" />
                         </div>
 
@@ -59,7 +59,7 @@
                             </div>
                             <div>
                                 <label class="font-semibold">Email<span class="text-red-500">*</span></label>
-                                <input v-model="user.email" type="text" class="py-2.5 w-full outline-none border ps-2"
+                                <input type="text" class="py-2.5 w-full outline-none border ps-2"
                                     placeholder="phone" />
                             </div>
                             <div>
@@ -128,18 +128,8 @@ if (id.value == undefined) {
     useRouter().push("/auth/signin")
 }
 
-const { data: res, pending, error } = await useFetch(`${useApi().url}/auth/profile/`, {
-    query: { "profileId": id.value },
-    watch: false,
-    method: 'get'
-})
-if (res.value.status == 'success') {
-    user.name = res.value.name
-    user.email = res.value.email
-}
-if (res.value == 'failed') {
-    useRouter().push('/auth/signin')
-}
+
+
 function money(amount) {
     const formmater = new Intl.NumberFormat('en-US', {
         style: "currency", currency: 'USD', maximumFractionDigits: 2
