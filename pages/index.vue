@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="swiper-container main md:h-[500px] h-[600px] group">
+        <div class="swiper-container main md:h-[500px] h-[600px] group relative">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
@@ -9,7 +9,7 @@
                                                     before:left-0 before:bg-black/50">
                         <img src="~/assets/images/bg/bg.jpg" alt="" class="w-full h-full object-cover">
                         <div class="absolute z-30 flex justify-center items-center w-full h-full top-0 right-0">
-                            <div class="w-[100%] ms-5 md:w-[80%] lg:w-[50%] md:-ms-[100px]">
+                            <div class="w-[100%] ms-5 md:w-[80%] xl:w-[50%] ">
                                 <h2 class="text-2xl  font-bold text-orange-300 animate__animated animate__backInUp
                                                                 animate__fast">
                                     OKI'S INT'L ONLINE AND PHYSICAL STORE
@@ -34,7 +34,7 @@
                                                     before:left-0 before:bg-black/50">
                         <img src="~/assets/images/bg/bg-1.jpg" alt="" class="w-full h-full object-cover">
                         <div class="absolute z-30 flex justify-center items-center w-full h-full top-0 right-0">
-                            <div class="w-[100%] ms-5 md:w-[50%] md:-ms-[100px]">
+                            <div class="w-[100%] ms-5 md:w-[80%] xl:w-[50%] ">
                                 <h2 class="text-2xl  font-bold text-orange-300 animate__animated animate__backInUp
                                                                 animate__fast">
                                     NEW AND FAIRLY USED COMPUTER, GADGET AND ACCESSORIES
@@ -59,7 +59,7 @@
                                                     before:left-0 before:bg-black/50">
                         <img src="~/assets/images/bg/bg-2.jpg" alt="" class="w-full h-full object-cover">
                         <div class="absolute z-30 flex justify-center items-center w-full h-full top-0 right-0">
-                            <div class="w-[100%] ms-5 md:w-[50%] md:-ms-[100px]">
+                            <div class="w-[100%] ms-5 md:w-[80%] xl:w-[50%]">
                                 <h2 class="text-2xl  font-bold text-orange-300 animate__animated animate__backInUp
                                                                 animate__fast">
                                     NEW ARRIVAL AVAILABLE INSTORE AND ONLINE
@@ -205,9 +205,9 @@
         <!-- small banners -->
         <div>
             <div class="grid lg:grid-cols-3 gap-3 mx-5">
-                <img src="~/assets/images/banner/1-3.jpg" alt="" class="w-full h-36 object-cover">
-                <img src="~/assets/images/banner/1-4.jpg" alt="" class="w-full h-36 object-cover">
-                <img src="~/assets/images/banner/1-5.jpg" alt="" class="w-full h-36 object-cover">
+                <img src="~/assets/images/banner/1-3.jpg" alt="" class="w-full  object-cover">
+                <img src="~/assets/images/banner/1-4.jpg" alt="" class="w-full  object-cover">
+                <img src="~/assets/images/banner/1-5.jpg" alt="" class="w-full object-cover">
             </div>
         </div>
         <!-- new on arrival -->
