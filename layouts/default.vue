@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-provide('api', 'http://localhost:8000')
+
 </script>
 
 <style lang="scss" scoped></style>

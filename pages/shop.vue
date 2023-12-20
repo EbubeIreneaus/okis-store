@@ -56,7 +56,7 @@
               </div>
               <div class="flex items-center gap-5">
                 <p>Display:</p>
-                <select name="" id="" class="py-2.5 border w-36 text-center" v-model="no_of_display">
+                <select  class="py-2.5 border w-36 text-center" v-model="no_of_display">
                   <option value="6">6</option>
                   <option value="10">10</option>
                   <option value="14">14</option>
@@ -163,19 +163,18 @@
 import { useApi } from '@/stores/url'
 import { useCart } from '@/stores/cart'
 import { useWishlist } from '@/stores/wishlist'
-const profileId = useCookie("profileId", { maxAge: 60 * 60 * 24 * 30 })
+// const profileId = useCookie("profileId", { maxAge: 60 * 60 * 24 * 30 })
 
 
 const grid_display = ref(3);
-const no_of_display = ref(10)
+const no_of_display = ref(18)
 
-const { data: products, pending: pending, error: error } = await useAsyncData('products',
-  () => $fetch('https://fakestoreapi.com/products', {
-    params: {
-      limit: no_of_display.value
-    }
-  }),
-  {
+const { data: products, pending: pending, error: error } = await useFetch('https://fakestoreapi.com/products', {
+    query: {
+      limit: no_of_display
+    },
+    method:'get',
+    key: new Date().getTime().toString(),
     watch: [no_of_display]
   }
 )
