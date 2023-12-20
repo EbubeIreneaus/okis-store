@@ -9,13 +9,13 @@
         </p>
       </div>
     </div>
-    <div class="flex flex-col md:px-10 px-5 my-10 md:flex-row">
-      <div class="md:max-w-[25%] w-full order-2 md:!order-1">
+    <div class="flex flex-col md:px-10 gap-y-10 px-5 my-10 lg:flex-row">
+      <div class="lg:max-w-[25%] w-full order-2 lg:!order-1">
         <shop-leftbar></shop-leftbar>
       </div>
 
       <!-- main section -->
-      <div class="w-full py-3 px-5 font-sans md:order-2">
+      <div class="w-full py-3 px-5 font-sans lg:order-2">
         <!-- top bar -->
         <div class="flex flex-col gap-y-5 md:flex-row items-center justify-between text-black/50">
           <div class="flex gap-2">
@@ -41,7 +41,7 @@
             </button>
           </div>
           <div>
-            <div class="flex gap-x-10 gap-y-5 flex-col md:flex-row">
+            <div class="flex gap-x-10 gap-y-5 flex-col lg:flex-row">
               <div class="flex items-center gap-5">
                 <p>Sort By:</p>
                 <select name="" id="" class="py-2.5 border w-36 text-center">
@@ -188,13 +188,20 @@ const addToCart = (product, e) => {
   cart.addCart(product.title, product.price, product.description, product.image, product.id)
 
 }
-
-onMounted(() => {
+const resizeWin = () =>{
   if (window.innerWidth < 425) {
     grid_display.value = 1
   } else if (window.innerWidth <= 768) {
     grid_display.value = 2
   }
+}
+
+onMounted(() => {
+  resizeWin()
+
+  window.addEventListener('resize', ()=>{
+    resizeWin()
+  })
 })
 </script>
 
