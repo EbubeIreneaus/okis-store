@@ -41,7 +41,7 @@
                                     </div>
                                     <div>
                                         <i class="far fa-heart ring-1 hover:ring-2 ring-orange-100 p-3
-                                         hover:text-orange-600 rounded-md"></i>
+                                         hover:text-orange-600 rounded-md" @clcik="addToWishlist(product, $event)"></i>
                                     </div>
                                     <div>
                                         <NuxtLink :to="`/product/${product.id}`">
@@ -68,6 +68,7 @@
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
 import { useCart } from '@/stores/cart'
+import { useWishlist } from '@/stores/wishlist'
 
 const { data: products, pending, error } = useFetch('https://fakestoreapi.com/products', {
     params: { imit: 30 },
@@ -81,6 +82,16 @@ const addToCart = (product, e) => {
 
     const cart = useCart()
     cart.addCart(product.title, product.price, product.description, product.image, product.id)
+}
+
+const addToWishlist = (product, e) => {
+  e.target.classList.add('!ring-4')
+  e.target.classList.add('!ring-orange-500')
+  e.target.classList.add('!text-orange-600')
+
+  const wishlist = useWishlist()
+  wishlist.addItem(product.title, product.price, product.description, product.image, product.id)
+
 }
 onMounted(() => {
     const swipper = new Swiper('.product-swipe', {

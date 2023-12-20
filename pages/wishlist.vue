@@ -30,7 +30,8 @@
                         <td class="font-mono font-bold">{{ money(product.price) }}</td>
                         <td>In Stock</td>
                         <td class="font-mono">
-                        <button class="px-7 py-2.5 bg-slate-200 border hover:ring-2 font-bold">Add To Cart</button></td>
+                        <button class="px-7 py-2.5 bg-slate-200 border hover:ring-2 font-bold" 
+                        @click="addToCart(product, $event)">Add To Cart</button></td>
                     </tr>
                 </table>
             </div>

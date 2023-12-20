@@ -120,7 +120,7 @@
                                             </div>
                                             <div>
                                                 <i class="far fa-heart ring-1 hover:ring-2 ring-orange-100 p-3
-                                         hover:text-orange-600 rounded-md"></i>
+                                         hover:text-orange-600 rounded-md" @click="addToWishlist(product, $event)"></i>
                                             </div>
                                             <div>
                                                 <NuxtLink :to="`/product/${product.id}`">
@@ -145,6 +145,7 @@
 <script setup>
 import { useApi } from '@/stores/url'
 import { useCart } from '@/stores/cart'
+import { useWishlist } from '@/stores/wishlist'
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
 import { LazyProductDesc } from '#components'
@@ -153,6 +154,7 @@ import { LazyProductReviews } from '#components'
 // import { LazyProductDesc} from '#components'
 // import { LazyProductDesc} from '#components'
 const { id } = useRoute().params
+const wishlist = useWishlist()
 
 const comp = [LazyProductDesc, LazyProductSpecification, LazyProductReviews]
 const comp_index = ref(0)
@@ -175,6 +177,15 @@ function money(amount) {
         style: "currency", currency: 'USD', maximumFractionDigits: 2
     })
     return formmater.format(amount)
+}
+const addToWishlist = (product, e) => {
+  e.target.classList.add('!ring-4')
+  e.target.classList.add('!ring-orange-500')
+  e.target.classList.add('!text-orange-600')
+
+  const wishlist = useWishlist()
+  wishlist.addItem(product.title, product.price, product.description, product.image, product.id)
+
 }
 onMounted(() => {
     const category_slide = new Swiper('.category', {
