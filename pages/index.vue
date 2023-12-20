@@ -253,7 +253,7 @@
         <!-- new laters -->
         <div>
             <div class="relative h-52 mg:h-fit border">
-                <img src="~/assets/images/breadcrumb/1.jpg" alt="" class="h-full">
+                <img src="~/assets/images/breadcrumb/1.jpg" alt="" class="h-full w-full object-cover">
                 <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
                     <div class="text-white text-center max-w-2xl w-full px-3 md:px-0">
                         <h2 class="text-4xl font-bold">Join our news Later</h2>
