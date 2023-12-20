@@ -3,8 +3,8 @@
         <div v-if="pending">
 
         </div>
-        <div class="flex gap-x-5 py-10 px-5 bg-slate-50">
-            <div class="w-fit "><nuxt-img :src="product.image" width="500" /></div>
+        <div class="flex flex-col md:flex-row gap-x-5  gap-y-5 py-10 px-5 bg-slate-50">
+            <div class="w-fit mx-auto"><nuxt-img :src="product.image" sizes="200px md:500px" fit="cover" /></div>
             <div class="font-semibold text-black/60 w-full px-5">
                 <h2 class="text-xl font-bold mb-3">{{ product.title }}</h2>
                 <div class="flex mb-2">

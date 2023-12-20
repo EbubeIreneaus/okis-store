@@ -252,15 +252,15 @@
         </div><br>
         <!-- new laters -->
         <div>
-            <div class="relative">
-                <img src="~/assets/images/breadcrumb/1.jpg" alt="">
+            <div class="relative h-52 mg:h-fit border">
+                <img src="~/assets/images/breadcrumb/1.jpg" alt="" class="h-full">
                 <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-                    <div class="text-white text-center max-w-2xl w-full">
+                    <div class="text-white text-center max-w-2xl w-full px-3 md:px-0">
                         <h2 class="text-4xl font-bold">Join our news Later</h2>
                         <p class="text-sm font-semibold mt-3">Get E-mail updates about our latest shop and special offers.
                         </p>
 
-                        <div class="mt-10 flex items-center">
+                        <div class="mt-3 md:mt-10 flex items-center">
                             <input type="email" placeholder="Enter your email"
                                 class="w-full py-2.5 outline-none ps-5 text-black/50">
                             <button class="bg-orange-400 py-2.5 px-10">subscribe</button>
