@@ -13,7 +13,7 @@
         <div>
             <div></div>
 
-            <div class="grid lg:grid-cols-2 gap-x-10 gap-y-7 font-sans md:px-10 py-10">
+            <div class="grid lg:grid-cols-2 gap-x-10 gap-y-7 font-sans px-4 md:px-10 py-10">
                 <div>
                     <h2 class="text-2xl font-bold text-black">Billing Details</h2>
                     <form class="text-black/50">
