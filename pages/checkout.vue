@@ -117,17 +117,6 @@ import {useCart} from '@/stores/cart'
 
 const cart = useCart()
 const countries = ["Nigeria", "Ghana", "Cameroon", "Niger", "Togo", "South Africa"]
-const id = useCookie('profileId')
-const user = reactive({
-    name: '',
-    email: ''
-})
-
-if (id.value == undefined) {
-    useApi().previous = '/checkout'
-    useRouter().push("/auth/signin")
-}
-
 
 
 function money(amount) {
